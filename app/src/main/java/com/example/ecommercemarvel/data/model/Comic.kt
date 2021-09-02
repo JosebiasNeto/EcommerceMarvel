@@ -1,6 +1,6 @@
 package com.example.ecommercemarvel.data.model
 
-data class Comics(
+data class Comic(
     var id: Int,
     var title: String,
     var description: String,

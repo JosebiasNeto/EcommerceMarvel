@@ -1,4 +1,4 @@
-package com.example.ecommercemarvel.ui
+package com.example.ecommercemarvel.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
