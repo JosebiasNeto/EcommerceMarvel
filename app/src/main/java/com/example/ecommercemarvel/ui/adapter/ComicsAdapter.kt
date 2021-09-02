@@ -32,4 +32,11 @@ class ComicsAdapter(private val comics: ArrayList<Comic>) :
         holder.bind(comics[position])
 
     override fun getItemCount(): Int = comics.size
+
+    fun addComics(comics: List<Comic>){
+        this.comics.apply {
+            clear()
+            addAll(comics)
+        }
+    }
 }
