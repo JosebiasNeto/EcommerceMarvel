@@ -2,7 +2,6 @@ package com.example.ecommercemarvel.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.ecommercemarvel.R
 import com.example.ecommercemarvel.databinding.ActivityDetailsBinding
 import com.squareup.picasso.Picasso
 
@@ -26,5 +25,7 @@ class Details : AppCompatActivity() {
         binding.tvPriceComic.text = intent.getStringExtra("price")
         val image = intent.getStringExtra("image")
         Picasso.get().load(image).into(binding.ivComic)
+
+
     }
 }
