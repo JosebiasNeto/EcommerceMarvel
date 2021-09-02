@@ -39,4 +39,5 @@ class ComicsAdapter(private val comics: ArrayList<Comic>) :
             addAll(comics)
         }
     }
+    fun getComic(position: Int) = comics[position]
 }

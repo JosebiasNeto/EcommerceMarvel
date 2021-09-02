@@ -20,7 +20,7 @@
     <TextView
         android:id="@+id/tv_title_comic"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:text="@string/txt_comic_title"
         android:textColor="@color/white"
@@ -29,17 +29,6 @@
         app:layout_constraintEnd_toEndOf="@id/iv_comic"
         app:layout_constraintStart_toStartOf="@id/iv_comic"
         app:layout_constraintTop_toBottomOf="@id/iv_comic" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/input_comics_quantity"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="30dp"
-        android:inputType="number"
-        android:shadowColor="@color/white"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv_price_comic"
@@ -64,7 +53,6 @@
         android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/iv_comic"
         app:layout_constraintStart_toStartOf="@id/tv_title_comic"
         app:layout_constraintTop_toBottomOf="@id/tv_title_comic" />
@@ -86,7 +74,7 @@
         android:text="@string/txt_buy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/iv_comic"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintStart_toStartOf="@id/iv_comic"/>
 
 
