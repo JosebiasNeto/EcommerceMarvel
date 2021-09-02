@@ -1,12 +1,21 @@
 package com.example.ecommercemarvel.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Comic(
-    var id: Int,
-    var title: String,
-    var description: String,
-    var modified: String,
-    var format: String,
-    var priceResponse: Price,
-    var imageResponse: GetImage,
-    var rare: Boolean
+    @SerializedName("id")
+    var id: Int?,
+    @SerializedName("title")
+    var title: String?,
+    @SerializedName("description")
+    var description: String?,
+    @SerializedName("modified")
+    var modified: String?,
+    @SerializedName("format")
+    var format: String?,
+    @SerializedName("prices")
+    var priceResponse: List<Price>,
+    @SerializedName("thumbnail")
+    var imageResponse: GetImage?,
+    var rare: Boolean?
 )

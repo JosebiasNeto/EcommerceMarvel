@@ -8,9 +8,6 @@ import com.example.ecommercemarvel.data.model.Comic
 
 class MainRepository(private val comicsAPI: ComicsAPIDatasource) {
 
-    suspend fun getComics(): List<Comic> =
+    suspend fun getComics() =
         comicsAPI.getComics()
-            .getComicsResponse.comic
-
-
 }

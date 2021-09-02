@@ -1,7 +1,10 @@
 package com.example.ecommercemarvel.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class GetImage(
-    var path: String,
-    var extension: String,
-    var image: String = path + "." + extension
+    @SerializedName("path")
+    var path: String?,
+    @SerializedName("extension")
+    var extension: String?,
 )
