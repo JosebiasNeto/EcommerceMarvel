@@ -84,31 +84,38 @@
         app:layout_constraintStart_toStartOf="@id/iv_comic"
         app:layout_constraintTop_toBottomOf="@id/iv_comic" />
 
-    <it.sephiroth.android.library.numberpicker.NumberPicker
-        style="@style/NumberPicker.Filled"
-        app:picker_max="100"
-        app:picker_min="0"
-        android:outlineAmbientShadowColor="@color/white"
-        android:outlineSpotShadowColor="@color/white"
-        android:progress="50"
-        app:picker_stepSize="2"
-        app:picker_tracker="exponential"
-        app:picker_orientation="horizontal"
-        android:id="@+id/numberPicker"
-        android:layout_width="130dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <me.angrybyte.numberpicker.view.ActualNumberPicker
+        android:id="@+id/actual_picker"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/red"
+        app:bar_color="@android:color/white"
+        app:bars_count="2"
+        app:controls_color="@android:color/white"
+        app:max_value="100"
+        app:min_value="1"
+        app:show_bars="false"
+        app:show_controls="true"
+        app:show_fast_controls="false"
+        app:show_highlight="false"
+        app:show_text="true"
+        app:text_color="@android:color/white"
+        app:text_size="24sp"
+        app:value="1"
         android:layout_margin="30dp"
-        tools:targetApi="p" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
 
 
     <Button
         android:id="@+id/button_buy"
         android:text="@string/txt_buy"
-        android:layout_width="200dp"
+        android:textSize="20sp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@id/numberPicker"
+        app:layout_constraintBottom_toBottomOf="@id/actual_picker"
         app:layout_constraintEnd_toEndOf="@id/tv_description_comic" />
 
 
