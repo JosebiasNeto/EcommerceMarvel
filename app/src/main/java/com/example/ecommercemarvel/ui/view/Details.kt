@@ -25,9 +25,9 @@ class Details : AppCompatActivity(), NumberPicker.OnValueChangeListener {
     private fun setupUI() {
         binding.tvTitleComic.text = intent.getStringExtra("title")
         binding.tvDescriptionComic.text = intent.getStringExtra("description")
-        binding.tvModifyComic.text = intent.getStringExtra("modified")
+        binding.tvModifyComic.text = getYearFromModified(intent.getStringExtra("modified"))
         binding.tvFormatComic.text = intent.getStringExtra("format")
-        binding.tvPriceComic.text = intent.getStringExtra("price")
+        binding.tvPriceComic.text = getCheckoutPriceUI(intent.getStringExtra("price")!!.toFloat())
         binding.star.isVisible = intent.getBooleanExtra("star", false) == true
         val image = intent.getStringExtra("image")
         Picasso.get().load(image).into(binding.ivComic)
@@ -37,6 +37,13 @@ class Details : AppCompatActivity(), NumberPicker.OnValueChangeListener {
         binding.buttonBuy.setOnClickListener {
             openCheckout()
         }
+    }
+    private fun getYearFromModified(modified: String?): String {
+        return modified!!.substring(0..3)
+    }
+
+    private fun getCheckoutPriceUI(price: Float): String {
+        return String.format("%.2f", price)
     }
 
     override fun onValueChange(picker: NumberPicker?, oldVal: Int, newVal: Int) {

@@ -12,4 +12,7 @@
     <string name="txt_keep_buying">keep buying</string>
     <string name="txt_congratulations">Congratulations on your purchase!</string>
     <string name="txt_used_coupon">You used a discount coupon!</string>
+    <string name="txt_currency">$ </string>
+    <string name="txt_for">for</string>
+    <string name="txt_un">un</string>
 </resources>

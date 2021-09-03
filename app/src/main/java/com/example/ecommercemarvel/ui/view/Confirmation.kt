@@ -24,8 +24,8 @@ class Confirmation : AppCompatActivity() {
         Picasso.get().load(image).into(binding.ivComic)
         binding.tvTitleComic.text = intent.getStringExtra("title")
         binding.tvFormatComic.text = intent.getStringExtra("format")
-        binding.tvModifyComic.text = intent.getStringExtra("modified")
-        binding.tvQuatityComics.text = intent.getStringExtra("quantity")
+        binding.tvModifyComic.text = getYearFromModified(intent.getStringExtra("modified"))
+        binding.tvQuantityComics.text = intent.getStringExtra("quantity")
         binding.tvPriceComic.text = intent.getStringExtra("price")
         if(intent.getBooleanExtra("coupon", false)) {
             binding.tvCheckCoupon.isVisible = true
@@ -33,6 +33,9 @@ class Confirmation : AppCompatActivity() {
         binding.keepBuying.setOnClickListener {
             openMainActivity()
         }
+    }
+    private fun getYearFromModified(modified: String?): String {
+        return modified!!.substring(0..3)
     }
 
     private fun openMainActivity() {

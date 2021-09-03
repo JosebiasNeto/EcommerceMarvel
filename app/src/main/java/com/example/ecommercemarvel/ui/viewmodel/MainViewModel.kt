@@ -16,6 +16,9 @@ class MainViewModel(
         emit(setRareComics(mainRepository.getComics().getComicsResponse.comic))
     }
     fun setRareComics(comics: List<Comic>): List<Comic>{
+        comics.forEach {
+            it.rare = false
+        }
         for (i in 0 until comics.size) {
             comics[i].rare = i in getPositionsRadom(comics.size)
         }

@@ -15,6 +15,9 @@ import com.example.ecommercemarvel.ui.viewmodel.MainViewModel
 import com.example.ecommercemarvel.ui.viewmodel.ViewModelFactory
 import com.example.ecommercemarvel.utils.OnItemClickListener
 import com.example.ecommercemarvel.utils.addOnItemClickListener
+import java.math.BigDecimal
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class MainActivity : AppCompatActivity() {
 
@@ -76,5 +79,4 @@ class MainActivity : AppCompatActivity() {
         intentDetails.putExtra("star", comic.rare)
         startActivity(intentDetails)
     }
-
 }

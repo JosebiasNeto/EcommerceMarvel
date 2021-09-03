@@ -22,9 +22,12 @@ class ComicsAdapter(private val comics: ArrayList<Comic>) :
                     .into(itemView.findViewById<ImageView>(R.id.iv_comic))
                 findViewById<TextView>(R.id.tv_title_comic).text = comic.title
                 findViewById<TextView>(R.id.tv_price_comic).text =
-                    comic.priceResponse[0].price.toString()
+                    getCheckoutPrice(comic.priceResponse[0].price)
                 findViewById<ImageView>(R.id.star).isVisible = comic.rare == true
             }
+        }
+        private fun getCheckoutPrice(price: Float?): String{
+            return String.format("%.2f", price)
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicsHolder =
@@ -43,4 +46,6 @@ class ComicsAdapter(private val comics: ArrayList<Comic>) :
         }
     }
     fun getComic(position: Int) = comics[position]
+
+
 }

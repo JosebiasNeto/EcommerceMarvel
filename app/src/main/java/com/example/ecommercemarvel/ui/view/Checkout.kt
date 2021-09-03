@@ -40,7 +40,7 @@ class Checkout : AppCompatActivity() {
         intentConfirmation.putExtra("title", intent.getStringExtra("title"))
         intentConfirmation.putExtra("format", intent.getStringExtra("format"))
         intentConfirmation.putExtra("modified", intent.getStringExtra("modified"))
-        intentConfirmation.putExtra("quantity", intent.getStringExtra("quatity"))
+        intentConfirmation.putExtra("quantity", intent.getStringExtra("quantity"))
         intentConfirmation.putExtra("price", intent.getStringExtra("price")?.let {
             getConfimationPrice(
                 it,coupon.text.toString(),
