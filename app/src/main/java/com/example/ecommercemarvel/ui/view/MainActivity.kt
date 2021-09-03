@@ -4,13 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.ecommercemarvel.data.api.RetrofitBuilder
 import com.example.ecommercemarvel.data.model.Comic
 import com.example.ecommercemarvel.data.repository.ComicsAPIDatasource
-import com.example.ecommercemarvel.data.repository.MainRepository
 import com.example.ecommercemarvel.databinding.ActivityMainBinding
 import com.example.ecommercemarvel.ui.adapter.ComicsAdapter
 import com.example.ecommercemarvel.ui.viewmodel.MainViewModel
@@ -67,16 +65,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun openComicDetails(idComic: Int){
-        val intent = Intent(this, Details::class.java)
+        val intentDetails = Intent(this, Details::class.java)
         val comic: Comic = adapter.getComic(idComic)
-        intent.putExtra("title", comic.title)
-        intent.putExtra("description", comic.description)
-        intent.putExtra("modified", comic.modified)
-        intent.putExtra("format", comic.format)
-        intent.putExtra("price", comic.priceResponse[0].price.toString())
-        intent.putExtra("image", (comic.imageResponse?.path +"."+comic.imageResponse?.extension))
-        intent.putExtra("star", comic.rare)
-        startActivity(intent)
+        intentDetails.putExtra("title", comic.title)
+        intentDetails.putExtra("description", comic.description)
+        intentDetails.putExtra("modified", comic.modified)
+        intentDetails.putExtra("format", comic.format)
+        intentDetails.putExtra("price", comic.priceResponse[0].price.toString())
+        intentDetails.putExtra("image", (comic.imageResponse?.path +"."+comic.imageResponse?.extension))
+        intentDetails.putExtra("star", comic.rare)
+        startActivity(intentDetails)
     }
 
 }

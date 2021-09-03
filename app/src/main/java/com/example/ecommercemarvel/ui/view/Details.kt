@@ -44,18 +44,20 @@ class Details : AppCompatActivity(), NumberPicker.OnValueChangeListener {
     }
     private fun openCheckout(){
 
-        val intentC = Intent(this, Checkout::class.java)
-        intentC.putExtra("titleC", intent.getStringExtra("title"))
-        intentC.putExtra("priceC", intent.getStringExtra("price")?.let {
+        val intentCheckout = Intent(this, Checkout::class.java)
+        intentCheckout.putExtra("title", intent.getStringExtra("title"))
+        intentCheckout.putExtra("price", intent.getStringExtra("price")?.let {
             getCheckoutPrice(
                 it,
                 mPicker.value.toString()
             )
         })
-        intentC.putExtra("imageC", intent.getStringExtra("image"))
-        intentC.putExtra("quantity", mPicker.value.toString())
-        intentC.putExtra("star", intent.getBooleanExtra("star", false))
-            startActivity(intentC)
+        intentCheckout.putExtra("image", intent.getStringExtra("image"))
+        intentCheckout.putExtra("quantity", mPicker.value.toString())
+        intentCheckout.putExtra("star", intent.getBooleanExtra("star", false))
+        intentCheckout.putExtra("format", intent.getStringExtra("format"))
+        intentCheckout.putExtra("modified", intent.getStringExtra("modified"))
+            startActivity(intentCheckout)
     }
     private fun getCheckoutPrice(price: String, quantity: String): String{
         val result = price.toDouble() * quantity.toDouble()

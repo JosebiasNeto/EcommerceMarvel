@@ -9,4 +9,7 @@
     <string name="txt_buy">Buy</string>
     <string name="txt_quantity_comics">2 und</string>
     <string name="txt_discount_coupon">DISCOUNT COUPON</string>
+    <string name="txt_keep_buying">keep buying</string>
+    <string name="txt_congratulations">Congratulations on your purchase!</string>
+    <string name="txt_used_coupon">You used a discount coupon!</string>
 </resources>
