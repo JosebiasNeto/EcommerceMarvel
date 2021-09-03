@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommercemarvel.R
 import com.example.ecommercemarvel.data.model.Comic
@@ -21,6 +23,7 @@ class ComicsAdapter(private val comics: ArrayList<Comic>) :
                 findViewById<TextView>(R.id.tv_title_comic).text = comic.title
                 findViewById<TextView>(R.id.tv_price_comic).text =
                     comic.priceResponse[0].price.toString()
+                findViewById<ImageView>(R.id.star).isVisible = comic.rare == true
             }
         }
     }

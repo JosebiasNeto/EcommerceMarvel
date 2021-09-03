@@ -7,15 +7,33 @@
     android:background="@color/black"
     tools:context=".ui.view.Details">
 
+    <FrameLayout
+        android:id="@+id/fl_iv_comic"
+        android:layout_width="288dp"
+        android:layout_height="384dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        >
     <ImageView
         android:id="@+id/iv_comic"
         android:layout_width="288dp"
         android:layout_height="384dp"
-        android:layout_marginTop="30dp"
         android:src="@drawable/marvel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/star"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_star_24"
+            android:layout_marginStart="240dp"
+            android:visibility="gone"
+            />
+    </FrameLayout>
+
 
     <TextView
         android:id="@+id/tv_title_comic"
@@ -26,9 +44,9 @@
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/iv_comic"
-        app:layout_constraintStart_toStartOf="@id/iv_comic"
-        app:layout_constraintTop_toBottomOf="@id/iv_comic" />
+        app:layout_constraintEnd_toEndOf="@id/fl_iv_comic"
+        app:layout_constraintStart_toStartOf="@id/fl_iv_comic"
+        app:layout_constraintTop_toBottomOf="@id/fl_iv_comic" />
 
     <TextView
         android:id="@+id/tv_price_comic"
@@ -40,7 +58,7 @@
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/iv_comic"
+        app:layout_constraintEnd_toEndOf="@id/fl_iv_comic"
         app:layout_constraintTop_toBottomOf="@id/tv_title_comic" />
 
     <TextView
@@ -59,8 +77,8 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         app:layout_constraintTop_toBottomOf="@id/tv_price_comic"
-        app:layout_constraintStart_toStartOf="@id/iv_comic"
-        app:layout_constraintEnd_toEndOf="@id/iv_comic"
+        app:layout_constraintStart_toStartOf="@id/fl_iv_comic"
+        app:layout_constraintEnd_toEndOf="@id/fl_iv_comic"
         android:layout_marginTop="40dp"
         android:hint="@string/txt_discount_coupon"
         android:background="@color/white"
@@ -71,9 +89,9 @@
         android:layout_height="50dp"
         android:text="@string/txt_buy"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/iv_comic"
+        app:layout_constraintEnd_toEndOf="@id/fl_iv_comic"
         android:layout_marginBottom="30dp"
-        app:layout_constraintStart_toStartOf="@id/iv_comic"/>
+        app:layout_constraintStart_toStartOf="@id/fl_iv_comic"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

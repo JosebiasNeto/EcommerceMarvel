@@ -75,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("format", comic.format)
         intent.putExtra("price", comic.priceResponse[0].price.toString())
         intent.putExtra("image", (comic.imageResponse?.path +"."+comic.imageResponse?.extension))
+        intent.putExtra("star", comic.rare)
         startActivity(intent)
     }
 

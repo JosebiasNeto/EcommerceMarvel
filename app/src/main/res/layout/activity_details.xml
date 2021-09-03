@@ -7,16 +7,32 @@
     android:background="@color/black"
     tools:context=".ui.view.Details">
 
+    <FrameLayout
+        android:id="@+id/fl_iv_comic"
+        android:layout_width="180dp"
+        android:layout_height="240dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        >
     <ImageView
         android:id="@+id/iv_comic"
         android:layout_width="180dp"
         android:layout_height="240dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
         android:src="@drawable/marvel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/star"
+            android:layout_width="31dp"
+            android:layout_height="31dp"
+            android:src="@drawable/ic_baseline_star_24"
+            android:layout_marginStart="150dp"
+            android:visibility="gone"
+            />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/tv_title_comic"
@@ -29,8 +45,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_comic"
-        app:layout_constraintTop_toTopOf="@id/iv_comic" />
+        app:layout_constraintStart_toEndOf="@id/fl_iv_comic"
+        app:layout_constraintTop_toTopOf="@id/fl_iv_comic" />
 
     <TextView
         android:id="@+id/tv_format_comic"
@@ -67,7 +83,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/tv_modify_comic"
-        app:layout_constraintBottom_toBottomOf="@id/iv_comic"
+        app:layout_constraintBottom_toBottomOf="@id/fl_iv_comic"
         app:layout_constraintEnd_toEndOf="@id/tv_title_comic"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp" />
@@ -81,8 +97,8 @@
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@id/tv_title_comic"
-        app:layout_constraintStart_toStartOf="@id/iv_comic"
-        app:layout_constraintTop_toBottomOf="@id/iv_comic" />
+        app:layout_constraintStart_toStartOf="@id/fl_iv_comic"
+        app:layout_constraintTop_toBottomOf="@id/fl_iv_comic" />
 
     <me.angrybyte.numberpicker.view.ActualNumberPicker
         android:id="@+id/actual_picker"

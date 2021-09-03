@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.NumberPicker
+import androidx.core.view.isVisible
 import com.example.ecommercemarvel.databinding.ActivityDetailsBinding
 import com.squareup.picasso.Picasso
 import me.angrybyte.numberpicker.view.ActualNumberPicker
@@ -27,6 +28,7 @@ class Details : AppCompatActivity(), NumberPicker.OnValueChangeListener {
         binding.tvModifyComic.text = intent.getStringExtra("modified")
         binding.tvFormatComic.text = intent.getStringExtra("format")
         binding.tvPriceComic.text = intent.getStringExtra("price")
+        binding.star.isVisible = intent.getBooleanExtra("star", false) == true
         val image = intent.getStringExtra("image")
         Picasso.get().load(image).into(binding.ivComic)
 
@@ -52,10 +54,12 @@ class Details : AppCompatActivity(), NumberPicker.OnValueChangeListener {
         })
         intentC.putExtra("imageC", intent.getStringExtra("image"))
         intentC.putExtra("quantity", mPicker.value.toString())
-        startActivity(intentC)
+        intentC.putExtra("star", intent.getBooleanExtra("star", false))
+            startActivity(intentC)
     }
     private fun getCheckoutPrice(price: String, quantity: String): String{
         val result = price.toDouble() * quantity.toDouble()
         return String.format("%.2f", result)
     }
 }
+
