@@ -57,9 +57,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         viewModel.getComics().observe(this, {
-            it.let {
-                refreshAdapter(it.getComicsResponse.comic)
-            }
+            refreshAdapter(it)
         })
     }
     private fun refreshAdapter(comics: List<Comic>){

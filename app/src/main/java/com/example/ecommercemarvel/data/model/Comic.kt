@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Comic(
     @SerializedName("id")
-    var id: Int?,
+    var id: Int,
     @SerializedName("title")
     var title: String?,
     @SerializedName("description")

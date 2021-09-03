@@ -2,12 +2,14 @@ package com.example.ecommercemarvel.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import com.example.ecommercemarvel.databinding.ActivityCheckoutBinding
 import com.squareup.picasso.Picasso
 
 class Checkout : AppCompatActivity() {
 
     private lateinit var binding: ActivityCheckoutBinding
+    private lateinit var editText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +25,7 @@ class Checkout : AppCompatActivity() {
         binding.tvQuatityComics.text = intent.getStringExtra("quantity")
         val image = intent.getStringExtra("imageC")
         Picasso.get().load(image).into(binding.ivComic)
+        editText = binding.inputText
         binding.buttonBuy.setOnClickListener {
 
         }
