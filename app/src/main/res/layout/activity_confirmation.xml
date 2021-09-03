@@ -131,7 +131,7 @@
         />
 
     <Button
-        android:id="@+id/button_buy"
+        android:id="@+id/keep_buying"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:text="@string/txt_keep_buying"

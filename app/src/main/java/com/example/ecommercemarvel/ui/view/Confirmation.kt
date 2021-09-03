@@ -1,5 +1,6 @@
 package com.example.ecommercemarvel.ui.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
@@ -29,5 +30,13 @@ class Confirmation : AppCompatActivity() {
         if(intent.getBooleanExtra("coupon", false)) {
             binding.tvCheckCoupon.isVisible = true
         }
+        binding.keepBuying.setOnClickListener {
+            openMainActivity()
+        }
+    }
+
+    private fun openMainActivity() {
+        val mainActivity = Intent(this, MainActivity::class.java)
+        startActivity(mainActivity)
     }
 }
