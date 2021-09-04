@@ -7,7 +7,7 @@ object RetrofitBuilder {
 
     private const val BASE_URL = "http://gateway.marvel.com/"
 
-    fun getRetrofit(): Retrofit{
+    fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

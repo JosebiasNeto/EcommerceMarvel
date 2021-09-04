@@ -12,7 +12,7 @@ class ViewModelFactory(
     private val comicsAPI: ComicsAPIDatasource,
     private val comicsDb: ComicsDBDatasource,
     private val networkConnection: CheckNetworkConnection
-): ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return MainViewModel(MainRepository(comicsAPI, comicsDb, networkConnection)) as T
     }

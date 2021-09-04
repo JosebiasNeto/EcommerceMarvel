@@ -27,13 +27,14 @@ class Confirmation : AppCompatActivity() {
         binding.tvModifyComic.text = getYearFromModified(intent.getStringExtra("modified"))
         binding.tvQuantityComics.text = intent.getStringExtra("quantity")
         binding.tvPriceComic.text = intent.getStringExtra("price")
-        if(intent.getBooleanExtra("coupon", false)) {
+        if (intent.getBooleanExtra("coupon", false)) {
             binding.tvCheckCoupon.isVisible = true
         }
         binding.keepBuying.setOnClickListener {
             openMainActivity()
         }
     }
+
     private fun getYearFromModified(modified: String?): String {
         return modified!!.substring(0..3)
     }

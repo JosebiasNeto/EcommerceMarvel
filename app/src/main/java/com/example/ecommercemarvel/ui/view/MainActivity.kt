@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         adapter = ComicsAdapter(arrayListOf())
         binding.rvMainActivity.adapter = adapter
 
-        binding.rvMainActivity.addOnItemClickListener(object : OnItemClickListener{
+        binding.rvMainActivity.addOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
                 openComicDetails(position)
             }
@@ -61,15 +61,22 @@ class MainActivity : AppCompatActivity() {
     private fun setupObservers() {
         viewModel.getComics().observe(this, {
             refreshAdapter(it)
+            viewModel.updateDatabase().observe(this,{
+                it
+            })
         })
+
+
     }
-    private fun refreshAdapter(comics: List<Comic>){
+
+    private fun refreshAdapter(comics: List<Comic>) {
         adapter.apply {
             addComics(comics)
             notifyDataSetChanged()
         }
     }
-    private fun openComicDetails(idComic: Int){
+
+    private fun openComicDetails(idComic: Int) {
         val intentDetails = Intent(this, Details::class.java)
         val comic: Comic = adapter.getComic(idComic)
         intentDetails.putExtra("title", comic.title)
@@ -77,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         intentDetails.putExtra("modified", comic.modified)
         intentDetails.putExtra("format", comic.format)
         intentDetails.putExtra("price", comic.prices[0].price)
-        intentDetails.putExtra("image", (comic.thumbnail?.path +"."+comic.thumbnail?.extension))
+        intentDetails.putExtra("image", (comic.thumbnail?.path + "." + comic.thumbnail?.extension))
         intentDetails.putExtra("star", comic.rare)
         startActivity(intentDetails)
     }

@@ -38,6 +38,7 @@ class Details : AppCompatActivity(), NumberPicker.OnValueChangeListener {
             openCheckout()
         }
     }
+
     private fun getYearFromModified(modified: String?): String {
         return modified!!.substring(0..3)
     }
@@ -46,10 +47,7 @@ class Details : AppCompatActivity(), NumberPicker.OnValueChangeListener {
         return String.format("%.2f", price)
     }
 
-    override fun onValueChange(picker: NumberPicker?, oldVal: Int, newVal: Int) {
-
-    }
-    private fun openCheckout(){
+    private fun openCheckout() {
 
         val intentCheckout = Intent(this, Checkout::class.java)
         intentCheckout.putExtra("title", intent.getStringExtra("title"))
@@ -64,11 +62,16 @@ class Details : AppCompatActivity(), NumberPicker.OnValueChangeListener {
         intentCheckout.putExtra("star", intent.getBooleanExtra("star", false))
         intentCheckout.putExtra("format", intent.getStringExtra("format"))
         intentCheckout.putExtra("modified", intent.getStringExtra("modified"))
-            startActivity(intentCheckout)
+        startActivity(intentCheckout)
     }
-    private fun getCheckoutPrice(price: String, quantity: String): String{
+
+    private fun getCheckoutPrice(price: String, quantity: String): String {
         val result = price.toDouble() * quantity.toDouble()
         return String.format("%.2f", result)
+    }
+
+    override fun onValueChange(picker: NumberPicker?, oldVal: Int, newVal: Int) {
+
     }
 }
 

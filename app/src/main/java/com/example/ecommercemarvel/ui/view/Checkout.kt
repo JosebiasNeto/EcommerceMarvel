@@ -43,29 +43,34 @@ class Checkout : AppCompatActivity() {
         intentConfirmation.putExtra("quantity", intent.getStringExtra("quantity"))
         intentConfirmation.putExtra("price", intent.getStringExtra("price")?.let {
             getConfimationPrice(
-                it,coupon.text.toString(),
-                intent.getBooleanExtra("star", false))
+                it, coupon.text.toString(),
+                intent.getBooleanExtra("star", false)
+            )
         })
-        intentConfirmation.putExtra("coupon", getConfirmationCoupon(
-            coupon.text.toString(),
-            intent.getBooleanExtra("star", false)))
+        intentConfirmation.putExtra(
+            "coupon", getConfirmationCoupon(
+                coupon.text.toString(),
+                intent.getBooleanExtra("star", false)
+            )
+        )
         intentConfirmation.putExtra("star", intent.getBooleanExtra("star", false))
         startActivity(intentConfirmation)
     }
-    fun getConfimationPrice(price: String, coupon: String, star: Boolean): String{
+
+    fun getConfimationPrice(price: String, coupon: String, star: Boolean): String {
         var priceResult = price.toDouble()
-        if(getConfirmationCoupon(coupon, star)) when{
-            coupon == "Raro"  -> priceResult = (price.toDouble()*0.75)
-            coupon == "Comum" -> priceResult = (price.toDouble()*0.90)
+        if (getConfirmationCoupon(coupon, star)) when {
+            coupon == "Raro" -> priceResult = (price.toDouble() * 0.75)
+            coupon == "Comum" -> priceResult = (price.toDouble() * 0.90)
         }
         return String.format("%.2f", priceResult)
     }
-    fun getConfirmationCoupon(coupon: String, star: Boolean) : Boolean{
+
+    fun getConfirmationCoupon(coupon: String, star: Boolean): Boolean {
         when {
             coupon == "Raro" -> return true
             coupon == "Comum" && !star -> return true
             else -> return false
         }
-
     }
 }

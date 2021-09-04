@@ -2,8 +2,6 @@ package com.example.ecommercemarvel.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.example.ecommercemarvel.data.repository.Converters.toComicEntity
-import com.example.ecommercemarvel.data.repository.Converters.toComic
 import com.example.ecommercemarvel.data.repository.MainRepository
 import kotlinx.coroutines.Dispatchers
 
@@ -11,7 +9,10 @@ class MainViewModel(
     private val mainRepository: MainRepository
 ) : ViewModel() {
 
-    fun getComics() = liveData(Dispatchers.IO){
+    fun getComics() = liveData(Dispatchers.IO) {
         emit(mainRepository.getComics())
+    }
+    fun updateDatabase() = liveData(Dispatchers.IO) {
+        emit(mainRepository.updataDatabase())
     }
 }

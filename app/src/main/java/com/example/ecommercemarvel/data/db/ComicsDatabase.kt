@@ -11,16 +11,16 @@ abstract class ComicsDatabase : RoomDatabase() {
 
     abstract fun comicsDao(): ComicsDao
 
-    companion object{
+    companion object {
         @Volatile
         private var INSTANCE: ComicsDatabase? = null
 
-        fun getDatabase(context: Context): ComicsDatabase{
+        fun getDatabase(context: Context): ComicsDatabase {
             val tempInstace = INSTANCE
-            if(tempInstace != null) {
+            if (tempInstace != null) {
                 return tempInstace
             }
-            synchronized(this){
+            synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ComicsDatabase::class.java,

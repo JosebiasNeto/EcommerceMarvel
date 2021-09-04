@@ -25,25 +25,30 @@ class ComicsAdapter(private val comics: ArrayList<Comic>) :
                 findViewById<ImageView>(R.id.star).isVisible = comic.rare == true
             }
         }
-        private fun getCheckoutPrice(price: Float?): String{
+
+        private fun getCheckoutPrice(price: Float?): String {
             return String.format("%.2f", price)
         }
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicsHolder =
-        ComicsHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.comic_item, parent, false))
+        ComicsHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.comic_item, parent, false)
+        )
 
     override fun onBindViewHolder(holder: ComicsHolder, position: Int) =
         holder.bind(comics[position])
 
     override fun getItemCount(): Int = comics.size
 
-    fun addComics(comics: List<Comic>){
+    fun addComics(comics: List<Comic>) {
         this.comics.apply {
             clear()
             addAll(comics)
         }
     }
+
     fun getComic(position: Int) = comics[position]
 
 

@@ -1,7 +1,6 @@
 package com.example.ecommercemarvel.data.repository
 
 import com.example.ecommercemarvel.data.model.Comic
-import com.example.ecommercemarvel.data.repository.Converters.toComicEntity
 import com.example.ecommercemarvel.utils.CheckNetworkConnection
 import java.util.*
 
@@ -11,30 +10,21 @@ class MainRepository(
     private val networkConnection: CheckNetworkConnection
 ) {
 
-    suspend fun getComics(): List<Comic> {
-
-        //return setRareComics(comicsAPI.getComics().data.results)
-
-        val isOnline: Boolean = networkConnection.checkConnection()
-        if (isOnline == true) {
-            if (comicsAPI.getComics().data.results
-                == comicsDb.getComics()
-            ) {
-                return comicsDb.getComics()
-            } else {
-                comicsDb.delComics()
-                setRareComics(comicsAPI.getComics().data.results).forEach { comic ->
-                    comicsDb.insert(toComicEntity(comic))
-                }
-                return comicsDb.getComics()
-            }
-        } else {
-            return comicsDb.getComics()
-        }
-
+    fun getComics(): List<Comic> {
+        return comicsDb.getComics()
     }
 
-    fun setRareComics(comics: List<Comic>): List<Comic>{
+    suspend fun updataDatabase(){
+        val isOnline: Boolean = networkConnection.checkConnection()
+        if (isOnline == true) {
+            comicsDb.delComics()
+            setRareComics(comicsAPI.getComics().data.results).forEach { comic ->
+                comicsDb.insert(comic)
+            }
+        }
+    }
+
+    fun setRareComics(comics: List<Comic>): List<Comic> {
         comics.forEach {
             it.rare = false
         }
@@ -43,11 +33,12 @@ class MainRepository(
         }
         return comics
     }
-    fun getPositionsRadom(size: Int):List<Int> {
+
+    fun getPositionsRadom(size: Int): List<Int> {
         val result: MutableList<Int> = mutableListOf()
-        while (result.size <= size*12/100){
+        while (result.size <= size * 12 / 100) {
             val a: Int = (0..size).radom()
-            if (result.contains(a)){
+            if (result.contains(a)) {
             } else {
                 result.add(a)
             }
