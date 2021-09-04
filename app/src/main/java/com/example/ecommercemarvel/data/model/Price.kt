@@ -1,5 +1,5 @@
 package com.example.ecommercemarvel.data.model
 
-data class Price (
+data class Price(
     var price: String
-        )
+)

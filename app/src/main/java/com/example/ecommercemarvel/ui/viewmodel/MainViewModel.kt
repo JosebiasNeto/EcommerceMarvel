@@ -2,6 +2,8 @@ package com.example.ecommercemarvel.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
+import com.example.ecommercemarvel.data.repository.Converters.toComicEntity
+import com.example.ecommercemarvel.data.repository.Converters.toComic
 import com.example.ecommercemarvel.data.repository.MainRepository
 import kotlinx.coroutines.Dispatchers
 

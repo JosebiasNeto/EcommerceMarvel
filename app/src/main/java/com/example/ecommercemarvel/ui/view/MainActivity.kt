@@ -76,8 +76,8 @@ class MainActivity : AppCompatActivity() {
         intentDetails.putExtra("description", comic.description)
         intentDetails.putExtra("modified", comic.modified)
         intentDetails.putExtra("format", comic.format)
-        intentDetails.putExtra("price", comic.price)
-        intentDetails.putExtra("image", (comic.imageResponse?.path +"."+comic.imageResponse?.extension))
+        intentDetails.putExtra("price", comic.prices[0].price)
+        intentDetails.putExtra("image", (comic.thumbnail?.path +"."+comic.thumbnail?.extension))
         intentDetails.putExtra("star", comic.rare)
         startActivity(intentDetails)
     }

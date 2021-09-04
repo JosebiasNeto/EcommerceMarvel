@@ -6,7 +6,7 @@ data class Comic(
     var description: String?,
     var modified: String?,
     var format: String?,
-    var price: String,
-    var imageResponse: GetImage,
+    var prices: List<Price>,
+    var thumbnail: GetImage?,
     var rare: Boolean?
 )

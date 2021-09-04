@@ -1,9 +1,7 @@
 package com.example.ecommercemarvel.data.repository
 
 import com.example.ecommercemarvel.data.model.Comic
-import com.example.ecommercemarvel.data.model.ComicAPI
-import com.example.ecommercemarvel.data.repository.Converters.toComicFromEntity
-import com.example.ecommercemarvel.data.repository.Converters.toComicEntityFromAPI
+import com.example.ecommercemarvel.data.repository.Converters.toComicEntity
 import com.example.ecommercemarvel.utils.CheckNetworkConnection
 import java.util.*
 
@@ -14,25 +12,29 @@ class MainRepository(
 ) {
 
     suspend fun getComics(): List<Comic> {
+
+        return setRareComics(comicsAPI.getComics().data.results)
+
         val isOnline: Boolean = networkConnection.checkConnection()
         if (isOnline == true) {
-            if (comicsAPI.getComics().getComicsResponse.comicAPI
+            if (comicsAPI.getComics().data.results
                 == comicsDb.getComics()
             ) {
                 return comicsDb.getComics()
             } else {
                 comicsDb.delComics()
-                setRareComics(comicsAPI.getComics().getComicsResponse.comicAPI).forEach { comicAPI ->
-                    comicsDb.insert(toComicEntityFromAPI(comicAPI))
+                setRareComics(comicsAPI.getComics().data.results).forEach { comic ->
+                    comicsDb.insert(toComicEntity(comic))
                 }
                 return comicsDb.getComics()
             }
         } else {
             return comicsDb.getComics()
         }
+
     }
 
-    fun setRareComics(comics: List<ComicAPI>): List<ComicAPI>{
+    fun setRareComics(comics: List<Comic>): List<Comic>{
         comics.forEach {
             it.rare = false
         }

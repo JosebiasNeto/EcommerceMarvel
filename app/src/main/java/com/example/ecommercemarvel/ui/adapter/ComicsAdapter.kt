@@ -17,11 +17,11 @@ class ComicsAdapter(private val comics: ArrayList<Comic>) :
     class ComicsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(comic: Comic) {
             itemView.apply {
-                Picasso.get().load((comic.imageResponse?.path + "." + comic.imageResponse?.extension))
+                Picasso.get().load((comic.thumbnail?.path + "." + comic.thumbnail?.extension))
                     .into(itemView.findViewById<ImageView>(R.id.iv_comic))
                 findViewById<TextView>(R.id.tv_title_comic).text = comic.title
                 findViewById<TextView>(R.id.tv_price_comic).text =
-                    getCheckoutPrice(comic.price.toFloat())
+                    getCheckoutPrice(comic.prices[0].price.toFloat())
                 findViewById<ImageView>(R.id.star).isVisible = comic.rare == true
             }
         }

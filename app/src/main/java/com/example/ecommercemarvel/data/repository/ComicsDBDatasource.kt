@@ -12,7 +12,7 @@ class ComicsDBDatasource(
     }
     suspend fun getComics(): List<Comic>{
         return comicsDao.getComics().map { comicEntity ->
-            Converters.toComicFromEntity(comicEntity)
+            Converters.toComic(comicEntity)
         }
     }
     suspend fun delComics(){
