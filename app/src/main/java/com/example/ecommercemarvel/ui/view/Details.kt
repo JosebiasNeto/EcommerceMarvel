@@ -7,9 +7,10 @@ import android.widget.NumberPicker
 import androidx.core.view.isVisible
 import com.example.ecommercemarvel.databinding.ActivityDetailsBinding
 import com.squareup.picasso.Picasso
+import me.angrybyte.numberpicker.listener.OnValueChangeListener
 import me.angrybyte.numberpicker.view.ActualNumberPicker
 
-class Details : AppCompatActivity(), NumberPicker.OnValueChangeListener {
+class Details : AppCompatActivity(), OnValueChangeListener {
 
     private lateinit var binding: ActivityDetailsBinding
     private lateinit var mPicker: ActualNumberPicker
@@ -23,6 +24,7 @@ class Details : AppCompatActivity(), NumberPicker.OnValueChangeListener {
     }
 
     private fun setupUI() {
+        mPicker = binding.actualPicker
         binding.tvTitleComic.text = intent.getStringExtra("title")
         binding.tvDescriptionComic.text = intent.getStringExtra("description")
         binding.tvModifyComic.text = getYearFromModified(intent.getStringExtra("modified"))
@@ -32,11 +34,11 @@ class Details : AppCompatActivity(), NumberPicker.OnValueChangeListener {
         val image = intent.getStringExtra("image")
         Picasso.get().load(image).into(binding.ivComic)
 
-        mPicker = binding.actualPicker
-
         binding.buttonBuy.setOnClickListener {
             openCheckout()
         }
+        mPicker.setListener(this)
+
     }
 
     private fun getYearFromModified(modified: String?): String {
@@ -70,8 +72,10 @@ class Details : AppCompatActivity(), NumberPicker.OnValueChangeListener {
         return String.format("%.2f", result)
     }
 
-    override fun onValueChange(picker: NumberPicker?, oldVal: Int, newVal: Int) {
-
+    override fun onValueChanged(oldValue: Int, newValue: Int) {
+        binding.tvPriceComic.text =
+            getCheckoutPriceUI((intent.getStringExtra("price")!!.toFloat()
+                    * newValue.toFloat()))
     }
 }
 
