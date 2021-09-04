@@ -4,7 +4,7 @@ import com.example.ecommercemarvel.data.model.*
 
 object Converters {
 
-    var comic: Comic = Comic(0,"","","","", listOf(), GetImage("",""),false)
+    var comic: Comic = Comic(0,"","","","", listOf(Price("")), GetImage("",""),false)
     var comicEntity: ComicEntity = ComicEntity(0,0,"","","","", "","","",false)
 
 
