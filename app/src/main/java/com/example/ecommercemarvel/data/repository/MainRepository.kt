@@ -13,7 +13,7 @@ class MainRepository(
 
     suspend fun getComics(): List<Comic> {
 
-        return setRareComics(comicsAPI.getComics().data.results)
+        //return setRareComics(comicsAPI.getComics().data.results)
 
         val isOnline: Boolean = networkConnection.checkConnection()
         if (isOnline == true) {

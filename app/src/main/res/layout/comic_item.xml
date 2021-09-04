@@ -7,7 +7,7 @@
     app:cardBackgroundColor="@color/gray_dark"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    android:elevation="50dp"
+    android:elevation="10dp"
     app:cardCornerRadius="10dp"
     android:layout_margin="10dp"
     >
