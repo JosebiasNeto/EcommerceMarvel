@@ -2,7 +2,7 @@ package com.example.ecommercemarvel.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ComicsResponse(
-    @SerializedName("results")
-    var comicAPI: List<ComicAPI>
+data class PriceAPI(
+    @SerializedName("price")
+    var price: Float
 )

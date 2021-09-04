@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class GetImage(
     @SerializedName("path")
-    var path: String?,
+    var path: String,
     @SerializedName("extension")
-    var extension: String?,
+    var extension: String,
 )

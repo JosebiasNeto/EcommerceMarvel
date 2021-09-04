@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommercemarvel.R
@@ -22,7 +21,7 @@ class ComicsAdapter(private val comics: ArrayList<Comic>) :
                     .into(itemView.findViewById<ImageView>(R.id.iv_comic))
                 findViewById<TextView>(R.id.tv_title_comic).text = comic.title
                 findViewById<TextView>(R.id.tv_price_comic).text =
-                    getCheckoutPrice(comic.priceResponse[0].price)
+                    getCheckoutPrice(comic.price.toFloat())
                 findViewById<ImageView>(R.id.star).isVisible = comic.rare == true
             }
         }

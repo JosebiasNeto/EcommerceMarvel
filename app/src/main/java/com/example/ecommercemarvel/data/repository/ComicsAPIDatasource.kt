@@ -4,9 +4,6 @@ import com.example.ecommercemarvel.data.api.ComicsAPI
 import com.example.ecommercemarvel.data.api.ComicsAPI.getHTTPRequest.PUBLIC_KEY
 import com.example.ecommercemarvel.data.api.ComicsAPI.getHTTPRequest.output
 import com.example.ecommercemarvel.data.api.ComicsAPI.getHTTPRequest.ts
-import com.example.ecommercemarvel.data.model.Comic
-import com.example.ecommercemarvel.data.model.ParentAPI
-import java.util.*
 
 class ComicsAPIDatasource(private val comicsAPI: ComicsAPI) {
 

@@ -7,17 +7,17 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.ecommercemarvel.data.api.RetrofitBuilder
+import com.example.ecommercemarvel.data.db.ComicsDatabase
 import com.example.ecommercemarvel.data.model.Comic
 import com.example.ecommercemarvel.data.repository.ComicsAPIDatasource
+import com.example.ecommercemarvel.data.repository.ComicsDBDatasource
 import com.example.ecommercemarvel.databinding.ActivityMainBinding
 import com.example.ecommercemarvel.ui.adapter.ComicsAdapter
 import com.example.ecommercemarvel.ui.viewmodel.MainViewModel
 import com.example.ecommercemarvel.ui.viewmodel.ViewModelFactory
+import com.example.ecommercemarvel.utils.CheckNetworkConnection
 import com.example.ecommercemarvel.utils.OnItemClickListener
 import com.example.ecommercemarvel.utils.addOnItemClickListener
-import java.math.BigDecimal
-import java.text.DecimalFormat
-import java.text.NumberFormat
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,7 +39,9 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(
             this,
             ViewModelFactory(
-                ComicsAPIDatasource(RetrofitBuilder.comicsAPI)
+                ComicsAPIDatasource(RetrofitBuilder.comicsAPI),
+                ComicsDBDatasource(ComicsDatabase.getDatabase(this).comicsDao()),
+                CheckNetworkConnection(this)
             )
         ).get(MainViewModel::class.java)
     }
@@ -74,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         intentDetails.putExtra("description", comic.description)
         intentDetails.putExtra("modified", comic.modified)
         intentDetails.putExtra("format", comic.format)
-        intentDetails.putExtra("price", comic.priceResponse[0].price.toString())
+        intentDetails.putExtra("price", comic.price)
         intentDetails.putExtra("image", (comic.imageResponse?.path +"."+comic.imageResponse?.extension))
         intentDetails.putExtra("star", comic.rare)
         startActivity(intentDetails)
