@@ -12,7 +12,7 @@ data class ComicEntity(
     var modified: String?,
     var format: String?,
     var price: String,
-    var path: String,
-    var extension: String,
+    var path: String?,
+    var extension: String?,
     var rare: Boolean?
 )
