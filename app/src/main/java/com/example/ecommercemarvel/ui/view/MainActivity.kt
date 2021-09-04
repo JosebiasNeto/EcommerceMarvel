@@ -65,8 +65,6 @@ class MainActivity : AppCompatActivity() {
                 it
             })
         })
-
-
     }
 
     private fun refreshAdapter(comics: List<Comic>) {

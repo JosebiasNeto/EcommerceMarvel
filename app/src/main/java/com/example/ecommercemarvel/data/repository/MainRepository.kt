@@ -10,7 +10,10 @@ class MainRepository(
     private val networkConnection: CheckNetworkConnection
 ) {
 
-    fun getComics(): List<Comic> {
+    suspend fun getComics(): List<Comic> {
+        if (comicsDb.getComics().isEmpty()){
+            return comicsAPI.getComics().data.results
+        }
         return comicsDb.getComics()
     }
 
