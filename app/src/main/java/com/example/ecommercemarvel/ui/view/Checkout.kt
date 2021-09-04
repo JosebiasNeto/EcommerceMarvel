@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import com.example.ecommercemarvel.databinding.ActivityCheckoutBinding
 import com.squareup.picasso.Picasso
 
@@ -31,6 +32,22 @@ class Checkout : AppCompatActivity() {
         coupon = binding.inputText
         binding.buttonBuy.setOnClickListener {
             openConfirmation()
+        }
+        coupon.addTextChangedListener {
+            if(getConfirmationCoupon(
+                    it.toString(),
+                    intent.getBooleanExtra("star", false)
+            )){
+                binding.couponValid.isVisible = true
+                binding.tvPriceComic.text = getConfimationPrice(
+                    intent.getStringExtra("price")!!,
+                    it.toString(),
+                    intent.getBooleanExtra("star", false)
+                )
+            } else {
+                binding.tvPriceComic.text = intent.getStringExtra("price")
+                binding.couponValid.isVisible = false
+            }
         }
     }
 

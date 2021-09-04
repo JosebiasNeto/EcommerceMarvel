@@ -104,6 +104,15 @@
         android:hint="@string/txt_discount_coupon"
         android:background="@color/white"
         />
+    <TextView
+        android:id="@+id/coupon_valid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/input_text"
+        app:layout_constraintEnd_toEndOf="@id/input_text"
+        android:text="@string/txt_valid_coupon"
+        android:textColor="@color/green"
+        android:visibility="gone"/>
     <Button
         android:id="@+id/button_buy"
         android:layout_width="0dp"
