@@ -92,6 +92,27 @@
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@id/tv_quatity_comics"
         app:layout_constraintBottom_toBottomOf="@id/tv_quatity_comics" />
+    <TextView
+        android:id="@+id/tv_discount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_price_comic"
+        app:layout_constraintEnd_toEndOf="@id/tv_price_comic"
+        android:textColor="@color/green"
+        android:textSize="18sp"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/tv_discount_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/tv_discount"
+        app:layout_constraintEnd_toStartOf="@id/tv_discount"
+        android:textColor="@color/green"
+        android:textSize="18sp"
+        android:text="@string/txt_discount"
+        android:visibility="gone"
+        />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/input_text"

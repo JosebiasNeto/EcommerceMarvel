@@ -40,15 +40,22 @@ class Checkout : AppCompatActivity() {
                     it.toString(),
                     intent.getBooleanExtra("star", false)
             )){
+                binding.tvDiscount.isVisible = true
+                binding.tvDiscountText.isVisible = true
                 binding.couponValid.isVisible = true
+                binding.tvDiscount.text = getDiscount(
+                    intent.getStringExtra("price")!!,
+                    it.toString(),
+                    intent.getBooleanExtra("star", false))
                 binding.tvPriceComic.text = getConfimationPrice(
                     intent.getStringExtra("price")!!,
                     it.toString(),
-                    intent.getBooleanExtra("star", false)
-                )
+                    intent.getBooleanExtra("star", false))
             } else {
                 binding.tvPriceComic.text = intent.getStringExtra("price")
                 binding.couponValid.isVisible = false
+                binding.tvDiscount.isVisible = false
+                binding.tvDiscountText.isVisible = false
             }
         }
     }
@@ -91,5 +98,13 @@ class Checkout : AppCompatActivity() {
             coupon == "Comum" && !star -> return true
             else -> return false
         }
+    }
+    private fun getDiscount(price: String, coupon: String, star: Boolean): String {
+        var discount = price.toDouble()
+        if (getConfirmationCoupon(coupon, star)) when {
+            coupon == "Raro" -> discount = (price.toDouble() * 0.25)
+            coupon == "Comum" -> discount = (price.toDouble() * 0.10)
+        }
+        return String.format("%.2f", discount)
     }
 }

@@ -17,4 +17,5 @@
     <string name="txt_un">un</string>
     <string name="txt_valid_coupon">Your coupon is valid!</string>
     <string name="txt_search">Search</string>
+    <string name="txt_discount">You saved: $</string>
 </resources>
