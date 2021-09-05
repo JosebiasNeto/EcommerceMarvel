@@ -30,15 +30,16 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/star"
+                android:layout_width="31dp"
+                android:layout_height="31dp"
+                android:src="@drawable/ic_baseline_star_24"
+                android:layout_marginStart="150dp"
+                android:visibility="gone"
+                />
         </androidx.cardview.widget.CardView>
-        <ImageView
-            android:id="@+id/star"
-            android:layout_width="31dp"
-            android:layout_height="31dp"
-            android:src="@drawable/ic_baseline_star_24"
-            android:layout_marginStart="150dp"
-            android:visibility="gone"
-            />
+
     </FrameLayout>
 
 

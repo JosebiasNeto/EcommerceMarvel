@@ -26,6 +26,7 @@ class Confirmation : AppCompatActivity() {
         binding.tvFormatComic.text = intent.getStringExtra("format")
         binding.tvModifyComic.text = getYearFromModified(intent.getStringExtra("modified"))
         binding.tvQuantityComics.text = intent.getStringExtra("quantity")
+        binding.star.isVisible = intent.getBooleanExtra("star", false) == true
         binding.tvPriceComic.text = intent.getStringExtra("price")
         if (intent.getBooleanExtra("coupon", false)) {
             binding.tvCheckCoupon.isVisible = true

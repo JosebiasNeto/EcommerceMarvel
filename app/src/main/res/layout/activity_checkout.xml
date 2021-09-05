@@ -123,6 +123,7 @@
         app:layout_constraintStart_toStartOf="@id/fl_iv_comic"
         app:layout_constraintEnd_toEndOf="@id/fl_iv_comic"
         android:layout_marginTop="40dp"
+        android:inputType="textCapCharacters"
         android:hint="@string/txt_discount_coupon"
         android:background="@color/white"
         android:backgroundTint="@color/gray_light"
