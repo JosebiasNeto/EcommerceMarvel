@@ -1,12 +1,19 @@
 package com.example.ecommercemarvel.ui.view
 
 import android.annotation.SuppressLint
+import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import android.widget.SearchView
 import androidx.annotation.RequiresApi
+import androidx.core.content.getSystemService
 import androidx.core.graphics.toColor
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -90,5 +97,29 @@ class MainActivity : AppCompatActivity() {
         intentDetails.putExtra("image", (comic.thumbnail?.path + "." + comic.thumbnail?.extension))
         intentDetails.putExtra("star", comic.rare)
         startActivity(intentDetails)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_search, menu)
+
+        val searchManager: SearchManager = getSystemService(
+            Context.SEARCH_SERVICE) as SearchManager
+        val searchItem = menu?.findItem(R.id.search_button)
+        val searchView = searchItem!!.actionView as SearchView
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                adapter.filter.filter(query)
+                return false
+            }
+            override fun onQueryTextChange(query: String?): Boolean {
+                adapter.filter.filter(query)
+                return false
+            }
+        })
+        searchView.setSearchableInfo(searchManager
+            .getSearchableInfo(componentName))
+        searchView.maxWidth
+        return true
     }
 }
