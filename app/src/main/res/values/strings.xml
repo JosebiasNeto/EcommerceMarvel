@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Ecommerce Marvel</string>
-    <string name="txt_title">MARVEL Store</string>
-    <string name="txt_comic_title">Comic Title itcanbemorebigthenweprevius</string>
-    <string name="txt_comic_price">0.00</string>
-    <string name="txt_format">comic\'s format</string>
-    <string name="txt_modify">modify_date_comic</string>
-    <string name="txt_description_comic">The Marvel Age of Comics continues! This time around, Spidey meets his match against such classic villains as Electro and the Lizard, and faces the return of one of his first foes: the Vulture! Plus: Spider-Man vs. the Living Brain, Peter Parker\'s fight with Flash Thompson, and the wall-crawler tackles the high-flying Human Torch!</string>
+    <string name="txt_title" translatable="false">MARVEL Store</string>
+    <string name="txt_comic_title" translatable="false">Comic Title itcanbemorebigthenweprevius</string>
+    <string name="txt_comic_price" translatable="false">0.00</string>
+    <string name="txt_format" translatable="false">comic\'s format</string>
+    <string name="txt_modify" translatable="false">modify_date_comic</string>
+    <string name="txt_description_comic" translatable="false">The Marvel Age of Comics continues! This time around, Spidey meets his match against such classic villains as Electro and the Lizard, and faces the return of one of his first foes: the Vulture! Plus: Spider-Man vs. the Living Brain, Peter Parker\'s fight with Flash Thompson, and the wall-crawler tackles the high-flying Human Torch!</string>
     <string name="txt_buy">Buy</string>
-    <string name="txt_quantity_comics">2 und</string>
+    <string name="txt_quantity_comics" translatable="false">2 und</string>
     <string name="txt_discount_coupon">DISCOUNT COUPON</string>
     <string name="txt_keep_buying">keep buying</string>
     <string name="txt_congratulations">Congratulations on your purchase!</string>

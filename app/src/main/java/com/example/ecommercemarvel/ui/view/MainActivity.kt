@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         intentDetails.putExtra("description", comic.description)
         intentDetails.putExtra("modified", comic.modified)
         intentDetails.putExtra("format", comic.format)
-        intentDetails.putExtra("price", comic.prices[0].price)
+        intentDetails.putExtra("price", getCheckoutPriceUI(comic.prices[0].price))
         intentDetails.putExtra("image", (comic.thumbnail?.path + "." + comic.thumbnail?.extension))
         intentDetails.putExtra("star", comic.rare)
         startActivity(intentDetails)
@@ -121,5 +121,9 @@ class MainActivity : AppCompatActivity() {
             .getSearchableInfo(componentName))
         searchView.maxWidth
         return true
+    }
+    private fun getCheckoutPriceUI(price: String): String {
+        val newprice = price.toFloat()
+        return String.format("%.2f", newprice)
     }
 }

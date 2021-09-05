@@ -84,10 +84,11 @@ class Checkout : AppCompatActivity() {
     }
 
     fun getConfimationPrice(price: String, coupon: String, star: Boolean): String {
-        var priceResult = price.toDouble()
+        val newprice = price.replace(",",".")
+        var priceResult = newprice.toDouble()
         if (getConfirmationCoupon(coupon, star)) when {
-            coupon == "Raro" -> priceResult = (price.toDouble() * 0.75)
-            coupon == "Comum" -> priceResult = (price.toDouble() * 0.90)
+            coupon == "Raro" -> priceResult = (newprice.toDouble() * 0.75)
+            coupon == "Comum" -> priceResult = (newprice.toDouble() * 0.90)
         }
         return String.format("%.2f", priceResult)
     }
@@ -100,10 +101,11 @@ class Checkout : AppCompatActivity() {
         }
     }
     private fun getDiscount(price: String, coupon: String, star: Boolean): String {
-        var discount = price.toDouble()
+        val newprice = price.replace(",",".")
+        var discount = newprice.toDouble()
         if (getConfirmationCoupon(coupon, star)) when {
-            coupon == "Raro" -> discount = (price.toDouble() * 0.25)
-            coupon == "Comum" -> discount = (price.toDouble() * 0.10)
+            coupon == "Raro" -> discount = (newprice.toDouble() * 0.25)
+            coupon == "Comum" -> discount = (newprice.toDouble() * 0.10)
         }
         return String.format("%.2f", discount)
     }

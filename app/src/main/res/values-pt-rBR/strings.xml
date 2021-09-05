@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ecommerce Marvel</string>
+    <string name="txt_currency">R$</string>
+    <string name="txt_for">por</string>
+    <string name="txt_un">und</string>
+    <string name="txt_valid_coupon">Seu cupom é válido!</string>
+    <string name="txt_search">Buscar...</string>
+    <string name="txt_discount">Você economizou: R$</string>
+    <string name="txt_used_coupon">Você usou um cupom de descontos!</string>
+    <string name="txt_congratulations">Parabéns pela sua compra!</string>
+    <string name="txt_keep_buying">Continuar comprando</string>
+    <string name="txt_discount_coupon">CUPOM DE DESCONTO</string>
+    <string name="txt_buy">COMPRAR</string>
+</resources>
