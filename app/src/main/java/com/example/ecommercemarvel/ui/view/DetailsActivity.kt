@@ -3,14 +3,13 @@ package com.example.ecommercemarvel.ui.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.NumberPicker
 import androidx.core.view.isVisible
 import com.example.ecommercemarvel.databinding.ActivityDetailsBinding
 import com.squareup.picasso.Picasso
 import me.angrybyte.numberpicker.listener.OnValueChangeListener
 import me.angrybyte.numberpicker.view.ActualNumberPicker
 
-class Details : AppCompatActivity(), OnValueChangeListener {
+class DetailsActivity : AppCompatActivity(), OnValueChangeListener {
 
     private lateinit var binding: ActivityDetailsBinding
     private lateinit var mPicker: ActualNumberPicker
@@ -51,7 +50,7 @@ class Details : AppCompatActivity(), OnValueChangeListener {
 
     private fun openCheckout() {
 
-        val intentCheckout = Intent(this, Checkout::class.java)
+        val intentCheckout = Intent(this, CheckoutActivity::class.java)
         intentCheckout.putExtra("title", intent.getStringExtra("title"))
         intentCheckout.putExtra("price", intent.getStringExtra("price")?.let {
             getCheckoutPrice(

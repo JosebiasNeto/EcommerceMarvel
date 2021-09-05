@@ -1,17 +1,15 @@
 package com.example.ecommercemarvel.ui.view
 
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
-import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import com.example.ecommercemarvel.databinding.ActivityCheckoutBinding
 import com.squareup.picasso.Picasso
 
-class Checkout : AppCompatActivity() {
+class CheckoutActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCheckoutBinding
     private lateinit var coupon: EditText
@@ -61,7 +59,7 @@ class Checkout : AppCompatActivity() {
     }
 
     private fun openConfirmation() {
-        val intentConfirmation = Intent(this, Confirmation::class.java)
+        val intentConfirmation = Intent(this, ConfirmationActivity::class.java)
         intentConfirmation.putExtra("image", intent.getStringExtra("image"))
         intentConfirmation.putExtra("title", intent.getStringExtra("title"))
         intentConfirmation.putExtra("format", intent.getStringExtra("format"))

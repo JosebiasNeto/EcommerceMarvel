@@ -7,7 +7,7 @@ import androidx.core.view.isVisible
 import com.example.ecommercemarvel.databinding.ActivityConfirmationBinding
 import com.squareup.picasso.Picasso
 
-class Confirmation : AppCompatActivity() {
+class ConfirmationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityConfirmationBinding
 

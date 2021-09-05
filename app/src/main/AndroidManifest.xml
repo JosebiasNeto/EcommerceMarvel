@@ -14,9 +14,9 @@
         android:requestLegacyExternalStorage="true"
         android:theme="@style/Theme.EcommerceMarvel"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.view.Confirmation"/>
-        <activity android:name=".ui.view.Checkout" />
-        <activity android:name=".ui.view.Details" />
+        <activity android:name=".ui.view.ConfirmationActivity"/>
+        <activity android:name=".ui.view.CheckoutActivity" />
+        <activity android:name=".ui.view.DetailsActivity" />
         <activity android:name=".ui.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,20 +1,14 @@
 package com.example.ecommercemarvel.ui.view
 
-import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
-import androidx.annotation.RequiresApi
-import androidx.core.content.getSystemService
-import androidx.core.graphics.toColor
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.ecommercemarvel.R
@@ -87,7 +81,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openComicDetails(idComic: Int) {
-        val intentDetails = Intent(this, Details::class.java)
+        val intentDetails = Intent(this, DetailsActivity::class.java)
         val comic: Comic = adapter.getComic(idComic)
         intentDetails.putExtra("title", comic.title)
         intentDetails.putExtra("description", comic.description)
