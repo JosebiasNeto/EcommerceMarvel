@@ -1,11 +1,16 @@
 package com.example.ecommercemarvel.ui.view
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.RequiresApi
+import androidx.core.graphics.toColor
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.ecommercemarvel.R
 import com.example.ecommercemarvel.data.api.RetrofitBuilder
 import com.example.ecommercemarvel.data.db.ComicsDatabase
 import com.example.ecommercemarvel.data.model.Comic

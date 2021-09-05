@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_dark"
+    android:background="@color/white"
     tools:context=".ui.view.Details">
 
     <FrameLayout
@@ -17,13 +17,20 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         >
+        <androidx.cardview.widget.CardView
+            android:layout_width="180dp"
+            android:layout_height="240dp"
+            app:cardCornerRadius="10dp"
+            >
     <ImageView
         android:id="@+id/iv_comic"
         android:layout_width="180dp"
         android:layout_height="240dp"
         android:src="@drawable/marvel"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
         <ImageView
             android:id="@+id/star"
             android:layout_width="31dp"
@@ -34,6 +41,7 @@
             />
     </FrameLayout>
 
+
     <TextView
         android:id="@+id/tv_title_comic"
         android:layout_width="0dp"
@@ -41,7 +49,7 @@
         android:layout_margin="20dp"
         android:layout_marginTop="10dp"
         android:text="@string/txt_comic_title"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:text="@string/txt_format"
-        android:textColor="@color/white"
+        android:textColor="@color/black_light"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/tv_title_comic"
@@ -66,7 +74,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/txt_modify"
-        android:textColor="@color/white"
+        android:textColor="@color/black_light"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/tv_title_comic"
         app:layout_constraintStart_toStartOf="@id/tv_title_comic"
@@ -77,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/txt_currency"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@id/tv_price_comic"
@@ -91,7 +99,7 @@
         android:gravity="end"
         android:text="@string/txt_comic_price"
         android:textAlignment="textEnd"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/tv_modify_comic"
@@ -106,7 +114,7 @@
         android:layout_height="340dp"
         android:layout_marginTop="20dp"
         android:text="@string/txt_description_comic"
-        android:textColor="@color/white"
+        android:textColor="@color/black_light"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@id/tv_title_comic"
         app:layout_constraintStart_toStartOf="@id/fl_iv_comic"
@@ -118,9 +126,9 @@
         android:layout_height="48dp"
         android:layout_centerHorizontal="true"
         android:background="@color/red"
-        app:bar_color="@android:color/white"
+        app:bar_color="@android:color/black"
         app:bars_count="2"
-        app:controls_color="@android:color/white"
+        app:controls_color="@android:color/black"
         app:max_value="100"
         app:min_value="1"
         app:show_bars="false"
@@ -128,7 +136,7 @@
         app:show_fast_controls="false"
         app:show_highlight="false"
         app:show_text="true"
-        app:text_color="@android:color/white"
+        app:text_color="@android:color/black"
         app:text_size="24sp"
         app:value="1"
         android:layout_margin="30dp"
@@ -142,6 +150,7 @@
         android:text="@string/txt_buy"
         android:textSize="20sp"
         android:layout_width="180dp"
+        android:textColor="@color/black"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="@id/actual_picker"
         app:layout_constraintEnd_toEndOf="@id/tv_description_comic" />
