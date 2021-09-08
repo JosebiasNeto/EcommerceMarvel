@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
+import com.example.ecommercemarvel.data.model.Comic
 import com.example.ecommercemarvel.databinding.ActivityCheckoutBinding
 import com.squareup.picasso.Picasso
 
@@ -23,12 +24,18 @@ class CheckoutActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        binding.tvTitleComic.text = intent.getStringExtra("title")
-        binding.tvPriceComic.text = intent.getStringExtra("price")
-        binding.tvQuatityComics.text = intent.getStringExtra("quantity")
-        binding.star.isVisible = intent.getBooleanExtra("star", false) == true
-        val image = intent.getStringExtra("image")
-        Picasso.get().load(image).into(binding.ivComic)
+        val comic = intent.getParcelableExtra<Comic>("comic")
+        if(comic != null) {
+            binding.tvTitleComic.text = comic.title
+            binding.tvPriceComic.text = intent.getStringExtra("quantity")?.let {
+                getCheckoutPrice(comic.prices[0].price,
+                    it)
+            }
+            binding.tvQuatityComics.text = intent.getStringExtra("quantity")
+            binding.star.isVisible = comic.rare == true
+            val image = comic.thumbnail.path +"."+ comic.thumbnail.extension
+            Picasso.get().load(image).into(binding.ivComic)
+        }
         coupon = binding.inputText
         binding.buttonBuy.setOnClickListener {
             openConfirmation()
@@ -36,21 +43,30 @@ class CheckoutActivity : AppCompatActivity() {
         coupon.addTextChangedListener {
             if(getConfirmationCoupon(
                     it.toString(),
-                    intent.getBooleanExtra("star", false)
+                    comic!!.rare
             )){
                 binding.tvDiscount.isVisible = true
                 binding.tvDiscountText.isVisible = true
                 binding.couponValid.isVisible = true
                 binding.tvDiscount.text = getDiscount(
-                    intent.getStringExtra("price")!!,
+                    intent.getStringExtra("quantity")?.let {
+                        getCheckoutPrice(comic.prices[0].price,
+                            it)
+                    }.toString(),
                     it.toString(),
-                    intent.getBooleanExtra("star", false))
+                    comic.rare)
                 binding.tvPriceComic.text = getConfimationPrice(
-                    intent.getStringExtra("price")!!,
+                    intent.getStringExtra("quantity")?.let {
+                        getCheckoutPrice(comic.prices[0].price,
+                            it)
+                    }.toString(),
                     it.toString(),
-                    intent.getBooleanExtra("star", false))
+                    comic.rare)
             } else {
-                binding.tvPriceComic.text = intent.getStringExtra("price")
+                binding.tvPriceComic.text = intent.getStringExtra("quantity")?.let {
+                    getCheckoutPrice(comic.prices[0].price,
+                        it)
+                }
                 binding.couponValid.isVisible = false
                 binding.tvDiscount.isVisible = false
                 binding.tvDiscountText.isVisible = false
@@ -58,26 +74,17 @@ class CheckoutActivity : AppCompatActivity() {
         }
     }
 
+    private fun getCheckoutPrice(price: String, quantity: String): String {
+        val priceResult = price.toFloat() * quantity.toFloat()
+        return String.format("%.2f", priceResult)
+    }
+
     private fun openConfirmation() {
         val intentConfirmation = Intent(this, ConfirmationActivity::class.java)
-        intentConfirmation.putExtra("image", intent.getStringExtra("image"))
-        intentConfirmation.putExtra("title", intent.getStringExtra("title"))
-        intentConfirmation.putExtra("format", intent.getStringExtra("format"))
-        intentConfirmation.putExtra("modified", intent.getStringExtra("modified"))
+        val comic = intent.getParcelableExtra<Comic>("comic")
+        intentConfirmation.putExtra("comic",comic)
         intentConfirmation.putExtra("quantity", intent.getStringExtra("quantity"))
-        intentConfirmation.putExtra("price", intent.getStringExtra("price")?.let {
-            getConfimationPrice(
-                it, coupon.text.toString(),
-                intent.getBooleanExtra("star", false)
-            )
-        })
-        intentConfirmation.putExtra(
-            "coupon", getConfirmationCoupon(
-                coupon.text.toString(),
-                intent.getBooleanExtra("star", false)
-            )
-        )
-        intentConfirmation.putExtra("star", intent.getBooleanExtra("star", false))
+        intentConfirmation.putExtra("coupon", coupon.text.toString())
         startActivity(intentConfirmation)
     }
 

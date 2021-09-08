@@ -7,12 +7,12 @@ import androidx.room.PrimaryKey
 data class ComicEntity(
     @PrimaryKey(autoGenerate = true) var idbd: Long = 0,
     var id: Int,
-    var title: String?,
+    var title: String,
     var description: String?,
-    var modified: String?,
-    var format: String?,
+    var modified: String,
+    var format: String,
     var price: String,
-    var path: String?,
-    var extension: String?,
-    var rare: Boolean?
+    var path: String,
+    var extension: String,
+    var rare: Boolean
 )

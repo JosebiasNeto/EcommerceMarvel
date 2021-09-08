@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
+import com.example.ecommercemarvel.data.model.Comic
 import com.example.ecommercemarvel.databinding.ActivityDetailsBinding
 import com.squareup.picasso.Picasso
 import me.angrybyte.numberpicker.listener.OnValueChangeListener
@@ -24,57 +25,40 @@ class DetailsActivity : AppCompatActivity(), OnValueChangeListener {
 
     private fun setupUI() {
         mPicker = binding.actualPicker
-        binding.tvTitleComic.text = intent.getStringExtra("title")
-        binding.tvDescriptionComic.text = intent.getStringExtra("description")
-        binding.tvModifyComic.text = getYearFromModified(intent.getStringExtra("modified"))
-        binding.tvFormatComic.text = intent.getStringExtra("format")
-        binding.tvPriceComic.text = getCheckoutPriceUI(intent.getStringExtra("price")!!.toFloat())
-        binding.star.isVisible = intent.getBooleanExtra("star", false) == true
-        val image = intent.getStringExtra("image")
-        Picasso.get().load(image).into(binding.ivComic)
-
+        val comic = intent.getParcelableExtra<Comic>("comic")
+        if(comic != null) {
+            binding.tvTitleComic.text = comic.title
+            binding.tvDescriptionComic.text = comic.description
+            binding.tvModifyComic.text = getYearFromModified(comic.modified)
+            binding.tvFormatComic.text = comic.format
+            binding.tvPriceComic.text = getCheckoutPriceUI(comic.prices[0].price.toFloat())
+            binding.star.isVisible = comic.rare == true
+            val image = (comic.thumbnail.path + "." + comic.thumbnail.extension)
+            Picasso.get().load(image).into(binding.ivComic)
+        }
         binding.buttonBuy.setOnClickListener {
             openCheckout()
         }
         mPicker.setListener(this)
-
     }
-
     private fun getYearFromModified(modified: String?): String {
         return modified!!.substring(0..3)
     }
-
     private fun getCheckoutPriceUI(price: Float): String {
         return String.format("%.2f", price)
     }
-
     private fun openCheckout() {
-
         val intentCheckout = Intent(this, CheckoutActivity::class.java)
-        intentCheckout.putExtra("title", intent.getStringExtra("title"))
-        intentCheckout.putExtra("price", intent.getStringExtra("price")?.let {
-            getCheckoutPrice(
-                it,
-                mPicker.value.toString()
-            )
-        })
-        intentCheckout.putExtra("image", intent.getStringExtra("image"))
+        intentCheckout.putExtra("comic", intent.getParcelableExtra<Comic>("comic"))
         intentCheckout.putExtra("quantity", mPicker.value.toString())
-        intentCheckout.putExtra("star", intent.getBooleanExtra("star", false))
-        intentCheckout.putExtra("format", intent.getStringExtra("format"))
-        intentCheckout.putExtra("modified", intent.getStringExtra("modified"))
         startActivity(intentCheckout)
     }
-
-    private fun getCheckoutPrice(price: String, quantity: String): String {
-        val result = price.toDouble() * quantity.toDouble()
-        return String.format("%.2f", result)
-    }
-
     override fun onValueChanged(oldValue: Int, newValue: Int) {
+        val comic = intent.getParcelableExtra<Comic>("comic")
+        if(comic != null)
         binding.tvPriceComic.text =
-            getCheckoutPriceUI((intent.getStringExtra("price")!!.toFloat()
-                    * newValue.toFloat()))
+            getCheckoutPriceUI(comic.prices[0].price.toFloat()
+                    * newValue.toFloat())
     }
 }
 
