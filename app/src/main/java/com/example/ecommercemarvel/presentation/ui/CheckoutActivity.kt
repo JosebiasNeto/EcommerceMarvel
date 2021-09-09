@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import com.example.ecommercemarvel.domain.model.Comic
 import com.example.ecommercemarvel.databinding.ActivityCheckoutBinding
+import com.example.ecommercemarvel.domain.usecase.Rules
 import com.squareup.picasso.Picasso
 
 class CheckoutActivity : AppCompatActivity() {
@@ -27,7 +29,7 @@ class CheckoutActivity : AppCompatActivity() {
         if(comic != null) {
             binding.tvTitleComic.text = comic.title
             binding.tvPriceComic.text = intent.getStringExtra("quantity")?.let {
-                getCheckoutPrice(comic.prices[0].price,
+                Rules.getCheckoutPrice(comic.prices[0].price,
                     it)
             }
             binding.tvQuatityComics.text = intent.getStringExtra("quantity")
@@ -40,30 +42,30 @@ class CheckoutActivity : AppCompatActivity() {
             openConfirmation()
         }
         coupon.addTextChangedListener {
-            if(getConfirmationCoupon(
+            if(Rules.getConfirmationCoupon(
                     it.toString(),
                     comic!!.rare
             )){
                 binding.tvDiscount.isVisible = true
                 binding.tvDiscountText.isVisible = true
                 binding.couponValid.isVisible = true
-                binding.tvDiscount.text = getDiscount(
+                binding.tvDiscount.text = Rules.getDiscount(
                     intent.getStringExtra("quantity")?.let {
-                        getCheckoutPrice(comic.prices[0].price,
+                        Rules.getCheckoutPrice(comic.prices[0].price,
                             it)
                     }.toString(),
                     it.toString(),
                     comic.rare)
-                binding.tvPriceComic.text = getConfimationPrice(
+                binding.tvPriceComic.text = Rules.getConfimationPrice(
                     intent.getStringExtra("quantity")?.let {
-                        getCheckoutPrice(comic.prices[0].price,
+                        Rules.getCheckoutPrice(comic.prices[0].price,
                             it)
                     }.toString(),
                     it.toString(),
                     comic.rare)
             } else {
                 binding.tvPriceComic.text = intent.getStringExtra("quantity")?.let {
-                    getCheckoutPrice(comic.prices[0].price,
+                    Rules.getCheckoutPrice(comic.prices[0].price,
                         it)
                 }
                 binding.couponValid.isVisible = false
@@ -73,11 +75,6 @@ class CheckoutActivity : AppCompatActivity() {
         }
     }
 
-    private fun getCheckoutPrice(price: String, quantity: String): String {
-        val priceResult = price.toFloat() * quantity.toFloat()
-        return String.format("%.2f", priceResult)
-    }
-
     private fun openConfirmation() {
         val intentConfirmation = Intent(this, ConfirmationActivity::class.java)
         val comic = intent.getParcelableExtra<Comic>("comic")
@@ -85,32 +82,5 @@ class CheckoutActivity : AppCompatActivity() {
         intentConfirmation.putExtra("quantity", intent.getStringExtra("quantity"))
         intentConfirmation.putExtra("coupon", coupon.text.toString())
         startActivity(intentConfirmation)
-    }
-
-    fun getConfimationPrice(price: String, coupon: String, star: Boolean): String {
-        val newprice = price.replace(",",".")
-        var priceResult = newprice.toDouble()
-        if (getConfirmationCoupon(coupon, star)) when {
-            coupon == "RARO" -> priceResult = (newprice.toDouble() * 0.75)
-            coupon == "COMUM" -> priceResult = (newprice.toDouble() * 0.90)
-        }
-        return String.format("%.2f", priceResult)
-    }
-
-    fun getConfirmationCoupon(coupon: String, star: Boolean): Boolean {
-        when {
-            coupon == "RARO" -> return true
-            coupon == "COMUM" && !star -> return true
-            else -> return false
-        }
-    }
-    private fun getDiscount(price: String, coupon: String, star: Boolean): String {
-        val newprice = price.replace(",",".")
-        var discount = newprice.toDouble()
-        if (getConfirmationCoupon(coupon, star)) when {
-            coupon == "RARO" -> discount = (newprice.toDouble() * 0.25)
-            coupon == "COMUM" -> discount = (newprice.toDouble() * 0.10)
-        }
-        return String.format("%.2f", discount)
     }
 }

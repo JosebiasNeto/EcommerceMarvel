@@ -16,6 +16,7 @@ import com.example.ecommercemarvel.databinding.ActivityMainBinding
 import com.example.ecommercemarvel.presentation.adapter.ComicsAdapter
 import com.example.ecommercemarvel.presentation.viewmodel.MainViewModel
 import com.example.ecommercemarvel.utils.OnItemClickListener
+import com.example.ecommercemarvel.utils.addOnItemClickListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
