@@ -1,4 +1,4 @@
-package com.example.ecommercemarvel.data.repository
+package com.example.ecommercemarvel.data.api
 
 import com.example.ecommercemarvel.data.api.ComicsAPI
 import com.example.ecommercemarvel.data.api.ComicsAPI.getHTTPRequest.PUBLIC_KEY

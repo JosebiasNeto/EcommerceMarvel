@@ -3,7 +3,7 @@ package com.example.ecommercemarvel.data.db
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.ecommercemarvel.data.model.ComicEntity
+import com.example.ecommercemarvel.domain.model.ComicEntity
 
 @Dao
 interface ComicsDao {

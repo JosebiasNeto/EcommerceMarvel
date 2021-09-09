@@ -1,9 +1,8 @@
-package com.example.ecommercemarvel.data.repository
+package com.example.ecommercemarvel.data.db
 
-import com.example.ecommercemarvel.data.db.ComicsDao
-import com.example.ecommercemarvel.data.model.Comic
-import com.example.ecommercemarvel.data.model.ComicEntity
-import com.example.ecommercemarvel.data.repository.Converters.toComicEntity
+import com.example.ecommercemarvel.domain.model.Comic
+import com.example.ecommercemarvel.domain.repository.Converters
+import com.example.ecommercemarvel.domain.repository.Converters.toComicEntity
 
 class ComicsDBDatasource(
     private val comicsDao: ComicsDao

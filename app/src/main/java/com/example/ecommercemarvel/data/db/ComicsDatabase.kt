@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.ecommercemarvel.data.model.ComicEntity
+import com.example.ecommercemarvel.domain.model.ComicEntity
 
 @Database(entities = [ComicEntity::class], version = 1)
 abstract class ComicsDatabase : RoomDatabase() {

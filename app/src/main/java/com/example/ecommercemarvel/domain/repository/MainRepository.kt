@@ -1,6 +1,8 @@
-package com.example.ecommercemarvel.data.repository
+package com.example.ecommercemarvel.domain.repository
 
-import com.example.ecommercemarvel.data.model.Comic
+import com.example.ecommercemarvel.data.api.ComicsAPIDatasource
+import com.example.ecommercemarvel.data.db.ComicsDBDatasource
+import com.example.ecommercemarvel.domain.model.Comic
 import com.example.ecommercemarvel.utils.CheckNetworkConnection
 import java.util.*
 

@@ -1,4 +1,4 @@
-package com.example.ecommercemarvel.ui.view
+package com.example.ecommercemarvel.presentation.ui
 
 import android.app.SearchManager
 import android.content.Context
@@ -9,27 +9,20 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import android.widget.SearchView
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.ecommercemarvel.R
-import com.example.ecommercemarvel.data.api.RetrofitBuilder
-import com.example.ecommercemarvel.data.db.ComicsDatabase
-import com.example.ecommercemarvel.data.model.Comic
-import com.example.ecommercemarvel.data.repository.ComicsAPIDatasource
-import com.example.ecommercemarvel.data.repository.ComicsDBDatasource
+import com.example.ecommercemarvel.domain.model.Comic
 import com.example.ecommercemarvel.databinding.ActivityMainBinding
-import com.example.ecommercemarvel.ui.adapter.ComicsAdapter
-import com.example.ecommercemarvel.ui.viewmodel.MainViewModel
-import com.example.ecommercemarvel.ui.viewmodel.ViewModelFactory
-import com.example.ecommercemarvel.utils.CheckNetworkConnection
+import com.example.ecommercemarvel.presentation.adapter.ComicsAdapter
+import com.example.ecommercemarvel.presentation.viewmodel.MainViewModel
 import com.example.ecommercemarvel.utils.OnItemClickListener
-import com.example.ecommercemarvel.utils.addOnItemClickListener
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: ComicsAdapter
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,19 +30,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupUI()
-        setupViewModel()
         setupObservers()
-    }
-
-    private fun setupViewModel() {
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(
-                ComicsAPIDatasource(RetrofitBuilder.comicsAPI),
-                ComicsDBDatasource(ComicsDatabase.getDatabase(this).comicsDao()),
-                CheckNetworkConnection(this)
-            )
-        ).get(MainViewModel::class.java)
     }
 
     private fun setupUI() {

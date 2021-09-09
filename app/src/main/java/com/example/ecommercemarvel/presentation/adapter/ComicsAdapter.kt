@@ -1,4 +1,4 @@
-package com.example.ecommercemarvel.ui.adapter
+package com.example.ecommercemarvel.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +10,8 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommercemarvel.R
-import com.example.ecommercemarvel.data.model.Comic
+import com.example.ecommercemarvel.domain.model.Comic
 import com.squareup.picasso.Picasso
-import java.util.*
 import kotlin.collections.ArrayList
 
 class ComicsAdapter(private val comics: ArrayList<Comic>) :

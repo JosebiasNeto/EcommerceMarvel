@@ -1,10 +1,10 @@
-package com.example.ecommercemarvel.ui.view
+package com.example.ecommercemarvel.presentation.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
-import com.example.ecommercemarvel.data.model.Comic
+import com.example.ecommercemarvel.domain.model.Comic
 import com.example.ecommercemarvel.databinding.ActivityConfirmationBinding
 import com.squareup.picasso.Picasso
 
@@ -69,15 +69,6 @@ class ConfirmationActivity : AppCompatActivity() {
             coupon == "COMUM" && !star -> return true
             else -> return false
         }
-    }
-    private fun getDiscount(price: String, coupon: String, star: Boolean): String {
-        val newprice = price.replace(",",".")
-        var discount = newprice.toDouble()
-        if (getConfirmationCoupon(coupon, star)) when {
-            coupon == "RARO" -> discount = (newprice.toDouble() * 0.25)
-            coupon == "COMUM" -> discount = (newprice.toDouble() * 0.10)
-        }
-        return String.format("%.2f", discount)
     }
     fun getConfimationPrice(price: String, coupon: String, star: Boolean): String {
         val newprice = price.replace(",",".")

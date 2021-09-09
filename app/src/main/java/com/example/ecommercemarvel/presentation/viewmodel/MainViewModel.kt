@@ -1,8 +1,8 @@
-package com.example.ecommercemarvel.ui.viewmodel
+package com.example.ecommercemarvel.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.example.ecommercemarvel.data.repository.MainRepository
+import com.example.ecommercemarvel.domain.repository.MainRepository
 import kotlinx.coroutines.Dispatchers
 
 class MainViewModel(

@@ -1,10 +1,9 @@
-package com.example.ecommercemarvel.ui.view
+package com.example.ecommercemarvel.presentation.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.view.isVisible
-import com.example.ecommercemarvel.data.model.Comic
+import com.example.ecommercemarvel.domain.model.Comic
 import com.example.ecommercemarvel.databinding.ActivityDetailsBinding
 import com.squareup.picasso.Picasso
 import me.angrybyte.numberpicker.listener.OnValueChangeListener

@@ -1,4 +1,4 @@
-package com.example.ecommercemarvel.data.model
+package com.example.ecommercemarvel.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

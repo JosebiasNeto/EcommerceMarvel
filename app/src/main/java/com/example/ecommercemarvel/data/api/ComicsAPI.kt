@@ -1,6 +1,6 @@
 package com.example.ecommercemarvel.data.api
 
-import com.example.ecommercemarvel.data.model.ParentAPI
+import com.example.ecommercemarvel.domain.model.ParentAPI
 import retrofit2.http.GET
 import retrofit2.http.Query
 import java.math.BigInteger

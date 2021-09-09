@@ -1,6 +1,6 @@
-package com.example.ecommercemarvel.data.repository
+package com.example.ecommercemarvel.domain.repository
 
-import com.example.ecommercemarvel.data.model.*
+import com.example.ecommercemarvel.domain.model.*
 
 object Converters {
 
