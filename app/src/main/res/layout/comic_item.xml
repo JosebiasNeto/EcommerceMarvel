@@ -35,7 +35,7 @@
             android:layout_width="150dp"
             android:layout_height="200dp"
             android:src="@drawable/marvel"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             />
                 <ImageView
                     android:id="@+id/star"

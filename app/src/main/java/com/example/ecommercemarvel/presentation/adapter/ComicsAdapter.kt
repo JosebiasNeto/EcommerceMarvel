@@ -11,6 +11,9 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommercemarvel.R
 import com.example.ecommercemarvel.domain.model.Comic
+import com.example.ecommercemarvel.domain.repository.Converters
+import com.example.ecommercemarvel.domain.usecase.Rules
+import com.example.ecommercemarvel.domain.usecase.Rules.getCheckoutPrice
 import com.squareup.picasso.Picasso
 import kotlin.collections.ArrayList
 
@@ -29,14 +32,11 @@ class ComicsAdapter(private val comics: ArrayList<Comic>) :
                     .into(itemView.findViewById<ImageView>(R.id.iv_comic))
                 findViewById<TextView>(R.id.tv_title_comic).text = comic.title
                 findViewById<TextView>(R.id.tv_price_comic).text =
-                    getCheckoutPrice(comic.prices[0].price.toFloat())
+                    Rules.getCheckoutPriceUI(comic.prices[0].price.toFloat())
                 findViewById<ImageView>(R.id.star).isVisible = comic.rare == true
             }
         }
 
-        private fun getCheckoutPrice(price: Float?): String {
-            return String.format("%.2f", price)
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicsHolder =
